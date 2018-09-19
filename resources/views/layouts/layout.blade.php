@@ -22,7 +22,14 @@
     <link rel="stylesheet" href="{{URL::asset('asset/build/css/custom.min.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
-
+  <style>
+    div.scroll{
+      overflow:scroll;
+      border:1px solid #dfdfdf;
+      width: 1100px;
+      margin: 0 auto;
+    }
+  </style>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -54,59 +61,83 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Bidang Kependudukan <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/kependudukan')}}">Input Data</a></li>
+                      <li><a href="{{url('/kependudukan')}}">Input Data Berdasarkan Kelompok Umur</a></li>
+                      <li><a href="{{url('/kependudukan1')}}">Input Data Berdasarkan Jenis Kelamin</a></li>
                       <li><a href="{{url('/kartu')}}">Index</a></li>
 
                     </ul>
                   </li>
                    <li><a><i class="fa fa-calendar"></i> Bidang Keluarga Berenca <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/index')}}">Input Data</a></li>
+                      <li><a href="{{url('/kb')}}">Input Data< Berdasarkan PUS dan Kesertaan Ber-KB/a></li>
                       <li><a href="{{url('/index')}}">Index</a></li>
                     </ul>
                   </li>
-                  <?php
-                  // <li><a><i class="fa fa-clock-o"></i> Jam Kerja <span class="fa fa-chevron-down"></span></a>
-                  ?>
+
+                   <li><a><i class="fa fa-clock-o"></i> Bidang Pembangunan Keluarga <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="general_elements.html">General Elements</a></li>
-                      <li><a href="media_gallery.html">Media Gallery</a></li>
-                      <li><a href="typography.html">Typography</a></li>
-                      <li><a href="icons.html">Icons</a></li>
-                      <li><a href="glyphicons.html">Glyphicons</a></li>
-                      <li><a href="widgets.html">Widgets</a></li>
-                      <li><a href="invoice.html">Invoice</a></li>
-                      <li><a href="inbox.html">Inbox</a></li>
-                      <li><a href="calendar.html">Calendar</a></li>
+                      <li><a href="{{url('/pembangunan_keluarga')}}">Input Data Berdasarkan Tahapan Keluarga Sejahtera</a></li>
+                      <li><a href="{{url('/pembangunan_keluarga1')}}">Input Data Berdasarkan Kesertaan Dalam Poktan</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
                     </ul>
                   </li>
-                  <?php
-                  // <li><a><i class="fa fa-envelope"></i> Izin/Cuti <span class="fa fa-chevron-down"></span></a>
-                  ?>
+
+                  <li><a><i class="fa fa-envelope"></i> Bidang Catatan Sipil <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="tables.html">Tables</a></li>
-                      <li><a href="tables_dynamic.html">Table Dynamic</a></li>
+                      <li><a href="{{url('/sipil')}}">Input Data Berdasarkan Kepemilikan Akte Kelahiran</a></li>
+                      <li><a href="{{url('/sipil1')}}">Input Data Berdasarkan Kepemilikan Kartu Tanda Penduduk</a></li>
+                      <li><a href="{{url('/sipil2')}}">Input Data Berdasarkan Kepemilikan Kartu Keluarga dan Akte Kawin</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
                     </ul>
                   </li>
-                  <?php
-                  // <li><a><i class="fa fa-gear"></i> Pengaturan Shift <span class="fa fa-chevron-down"></span></a>
-                  ?>
+
+                  <li><a><i class="fa fa-gear"></i> Bidang Kesehatan <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Chart JS</a></li>
-                      <li><a href="chartjs2.html">Chart JS2</a></li>
-                      <li><a href="morisjs.html">Moris JS</a></li>
-                      <li><a href="echarts.html">ECharts</a></li>
-                      <li><a href="other_charts.html">Other Charts</a></li>
+                      <li><a href="{{url('/kesehatan')}}">Input Data Berdasarkan Kondisi Sarana Kesehatan Keluarga</a></li>
+                      <li><a href="{{url('/kesehatan1')}}">Input Data Berdasarkan Kondisi Kesehatan</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
                     </ul>
                   </li>
-                  <?php
-                  // <li><a><i class="fa fa-clone"></i> Report <span class="fa fa-chevron-down"></span></a>
-                  ?>
+
+                  <li><a><i class="fa fa-clone"></i> Bidang Pendidikan <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
-                      <li><a href="fixed_footer.html">Fixed Footer</a></li>
+                      <li><a href="{{url('/pendidikan')}}">Input Data Berdasarkan Kondisi Kondisi Keluarga Yang Melek Huruf</a></li>
+                      <li><a href="{{url('/pendidikan1')}}">Input Data Berdasarkan Jumlah Siswa dan Angka Drop Out Sekolah</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
                     </ul>
                   </li>
+
+                  <li><a><i class="fa fa-clone"></i> Bidang Ketenagakerjaan <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/ketenagakerjaan')}}">Input Data Berdasarkan Penduduk Usia Produktif</a></li>
+                      <li><a href="{{url('/ketenagakerjaan1')}}">Input Data Berdasarkan Jenis Pekerjaan Penduduk</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-clone"></i> Bidang Perumahan <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/perumahan')}}">Input Data Berdasarkan Perumahan Layak Huni</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-clone"></i> Bidang Sosial <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/sosial')}}">Input Data Berdasarkan Jumlah Penyandang Masalah Kesejahteraan Sosial</a></li>
+                      <li><a href="{{url('/sosial1')}}">Input Data Berdasarkan Jumlah Keluarga Penerima Program Keluarga Harapan</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
+                    </ul>
+                  </li>
+
+                  <li><a><i class="fa fa-clone"></i> Bidang Potensi Desa <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{url('/desa')}}">Input Data Berdasarkan Sumber Air Bersih</a></li>
+                      <li><a href="{{url('/desa1')}}">Input Data Berdasarkan Fasilitas Umum</a></li>
+                      <li><a href="media_gallery.html">Index</a></li>
+                    </ul>
+                  </li>
+
                 </ul>
               </div>
             </div>
