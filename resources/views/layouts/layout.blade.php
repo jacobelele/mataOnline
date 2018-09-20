@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="{{URL::asset('asset/vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
     <link rel="stylesheet" href="{{URL::asset('asset/build/css/custom.min.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.min.css')}}">
   </head>
   <style>
     div.scroll{
@@ -219,6 +221,8 @@
     <script src="{{URL::asset('asset/vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.min.js')}}"></script>
 
     <script src="{{URL::asset('asset/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>

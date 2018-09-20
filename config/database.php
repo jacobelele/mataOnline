@@ -41,11 +41,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'https://mysql.paredigitalhouse.com'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'mata'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'db_mata'),
+            'username' => env('DB_USERNAME', 'matamu'),
+            'password' => env('DB_PASSWORD', 'matamulae'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

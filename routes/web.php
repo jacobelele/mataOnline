@@ -18,6 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/inputData',function(){
+  return view('globalInput');
+});
+Route::get('/getBidang', 'LokasiController@getBidang')->name('bidang');
+Route::get('/getTabulasi', 'LokasiController@getTabulasi')->name('tabulasi');
+Route::get('/viewDyn/{id}', 'LokasiController@viewDyn')->name('viewTab');
+Route::post('/postData', 'PostController@store')->name('storeBidang');
+Route::get('/getProvinsi', 'LokasiController@getProvinsi')->name('provinsi');
+Route::get('/getKota', 'LokasiController@getKota')->name('kota');
+Route::get('/getKecamatan', 'LokasiController@getKecamatan')->name('kecamatan');
+Route::get('/getKelurahan', 'LokasiController@getKelurahan')->name('kelurahan');
 
 Route::get('/kependudukan', function () {
     return view('kependudukan.input');
