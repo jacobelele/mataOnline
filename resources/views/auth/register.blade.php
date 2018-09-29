@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@extends('layouts.reg')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -38,6 +38,56 @@
                                 @endif
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label text-md-right" for="first-name">Provinsi
+                          </label>
+                          <div class="col-md-6">
+                            <select id="selectProvinsi" name="provinsi_id" class="form-control select2" >
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label text-md-right" for="first-name">Kabupaten/Kota
+                          </label>
+                          <div class="col-md-6">
+                            <select id="selectKota" name="kota_id" class="form-control select2" >
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label text-md-right" for="first-name">Kecamatan
+                          </label>
+                          <div class="col-md-6">
+                            <select id="selectKecamatan" name="kecamatan_id" class="form-control select2" >
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label class="col-md-4 col-form-label text-md-right" for="first-name">Desa/Kelurahan</label>
+                          <div class="col-md-6">
+                            <select id="selectKelurahan" name="kelurahan_id" class="form-control select2" >
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="lokasi_id" class="col-md-4 col-form-label text-md-right">{{ __('lokasi_id') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="lokasi_id" type="lokasi_id" class="form-control{{ $errors->has('lokasi_id') ? ' is-invalid' : '' }}" name="lokasi_id" value="{{ old('lokasi_id') }}" required>
+
+                                @if ($errors->has('lokasi_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('lokasi_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
