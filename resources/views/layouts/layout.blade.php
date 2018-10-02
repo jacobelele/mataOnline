@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="#" type="image/ico" />
 
-    <title>PUML</title>
+    <title>Mata Online</title>
     <!-- Bootstrap -->
 
     <link rel="stylesheet" href="{{URL::asset('asset/vendors/iCheck/skins/flat/green.css')}}">
@@ -19,8 +19,12 @@
     <link rel="stylesheet" href="{{URL::asset('asset/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('asset/vendors/jqvmap/dist/jqvmap.min.css')}}">
     <link rel="stylesheet" href="{{URL::asset('asset/vendors/bootstrap-daterangepicker/daterangepicker.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css')}}">
     <link rel="stylesheet" href="{{URL::asset('asset/build/css/custom.min.css')}}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.min.css')}}">
+
   </head>
   <style>
     div.scroll{
@@ -29,7 +33,16 @@
       width: 1100px;
       margin: 0 auto;
     }
+    /* @media print {
+      body, html,table, #wrapper {
+          width: 100%;
+      }
+    } */
   </style>
+  <style media="print">
+
+  </style>
+
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
@@ -59,82 +72,20 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Bidang Kependudukan <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i>Manajemen User<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/kependudukan')}}">Input Data Berdasarkan Kelompok Umur</a></li>
-                      <li><a href="{{url('/kependudukan1')}}">Input Data Berdasarkan Jenis Kelamin</a></li>
-                      <li><a href="{{url('/kartu')}}">Index</a></li>
-
+                      <li><a href="{{url('/getUser')}}">Data User</a></li>
+                      <li><a href="{{url('/user/create')}}">Tambah User</a></li>
                     </ul>
                   </li>
-                   <li><a><i class="fa fa-calendar"></i> Bidang Keluarga Berenca <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i>Input Data<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/kb')}}">Input Data< Berdasarkan PUS dan Kesertaan Ber-KB/a></li>
-                      <li><a href="{{url('/index')}}">Index</a></li>
+                      <li><a href="{{url('/inputData')}}">Input Data</a></li>
                     </ul>
                   </li>
-
-                   <li><a><i class="fa fa-clock-o"></i> Bidang Pembangunan Keluarga <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-home"></i>Show Data<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{url('/pembangunan_keluarga')}}">Input Data Berdasarkan Tahapan Keluarga Sejahtera</a></li>
-                      <li><a href="{{url('/pembangunan_keluarga1')}}">Input Data Berdasarkan Kesertaan Dalam Poktan</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-envelope"></i> Bidang Catatan Sipil <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/sipil')}}">Input Data Berdasarkan Kepemilikan Akte Kelahiran</a></li>
-                      <li><a href="{{url('/sipil1')}}">Input Data Berdasarkan Kepemilikan Kartu Tanda Penduduk</a></li>
-                      <li><a href="{{url('/sipil2')}}">Input Data Berdasarkan Kepemilikan Kartu Keluarga dan Akte Kawin</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-gear"></i> Bidang Kesehatan <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/kesehatan')}}">Input Data Berdasarkan Kondisi Sarana Kesehatan Keluarga</a></li>
-                      <li><a href="{{url('/kesehatan1')}}">Input Data Berdasarkan Kondisi Kesehatan</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-clone"></i> Bidang Pendidikan <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/pendidikan')}}">Input Data Berdasarkan Kondisi Kondisi Keluarga Yang Melek Huruf</a></li>
-                      <li><a href="{{url('/pendidikan1')}}">Input Data Berdasarkan Jumlah Siswa dan Angka Drop Out Sekolah</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-clone"></i> Bidang Ketenagakerjaan <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/ketenagakerjaan')}}">Input Data Berdasarkan Penduduk Usia Produktif</a></li>
-                      <li><a href="{{url('/ketenagakerjaan1')}}">Input Data Berdasarkan Jenis Pekerjaan Penduduk</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-clone"></i> Bidang Perumahan <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/perumahan')}}">Input Data Berdasarkan Perumahan Layak Huni</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-clone"></i> Bidang Sosial <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/sosial')}}">Input Data Berdasarkan Jumlah Penyandang Masalah Kesejahteraan Sosial</a></li>
-                      <li><a href="{{url('/sosial1')}}">Input Data Berdasarkan Jumlah Keluarga Penerima Program Keluarga Harapan</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
-                    </ul>
-                  </li>
-
-                  <li><a><i class="fa fa-clone"></i> Bidang Potensi Desa <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="{{url('/desa')}}">Input Data Berdasarkan Sumber Air Bersih</a></li>
-                      <li><a href="{{url('/desa1')}}">Input Data Berdasarkan Fasilitas Umum</a></li>
-                      <li><a href="media_gallery.html">Index</a></li>
+                      <li><a href="{{url('/getData')}}">Show Data</a></li>
                     </ul>
                   </li>
 
@@ -219,6 +170,8 @@
     <script src="{{URL::asset('asset/vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/flot.curvedlines/curvedLines.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.min.js')}}"></script>
 
     <script src="{{URL::asset('asset/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
@@ -241,7 +194,9 @@
     <script src="{{URL::asset('asset/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/moment/min/moment.min.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/moment/locale/id.js')}}"></script>
     <script src="{{URL::asset('asset/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js')}}"></script>
     <script src="{{URL::asset('asset/build/js/custom.min.js')}}"></script>
     @stack('scripts')
   </body>

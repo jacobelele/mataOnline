@@ -10,8 +10,6 @@
 
     <title>Mata Online</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,6 +17,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('asset/vendors/select2/dist/css/select2.min.css')}}">
+
 </head>
 <body>
     <div id="app">
@@ -75,5 +76,12 @@
             @yield('content')
         </main>
     </div>
+    <!-- Scripts -->
+    <script src="{{URL::asset('asset/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.js')}}"></script>
+    <script src="{{URL::asset('asset/vendors/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{URL::asset('asset/build/js/custom.min.js')}}"></script>
+    @stack('scripts')
 </body>
 </html>
