@@ -51,48 +51,56 @@ $kes = array_keys($col);
 
  ?>
  <table id="customers1">
-  @for($i=0;$i< sizeof($que); $i++)
   <tr>
-<th colspan="2"><center>BIDANG  {{$que[$i]->bidang}}</center></th>
+<th colspan="2"><center>BIDANG  {{$lok[0]->bidang}}</center></th>
 </tr>
 <tr>
-<th colspan="2"><center>TABEL {{$que[$i]->tabel}} Tahun {{$que[$i]->tahun}}</center></th>
+<th colspan="2"><center>TABEL {{$lok[0]->tabel}} Tahun {{$lok[0]->tahun}}</center></th>
 </tr>
 <tr>
   <td>Kelurahan</td>
-  <td>{{$que[$i]->kelurahan}}</td>
+  <td>{{$lok[0]->kelurahan}}</td>
 </tr>
 <tr>
   <td>Kecamatan</td>
-  <td>{{$que[$i]->kecamatan}}</td>
+  <td>{{$lok[0]->kecamatan}}</td>
 </tr>
 <tr>
   <td>Kabupten/Kota</td>
-  <td>{{$que[$i]->kota}}</td>
+  <td>{{$lok[0]->kota}}</td>
 </tr>
 <tr>
   <td>Provinsi</td>
-  <td>{{$que[$i]->provinsi}}</td>
+  <td>{{$lok[0]->provinsi}}</td>
 </tr>
-@break
-@endfor
 </table>
 
 
   <table id="customers">
-      @for($i=0;$i< sizeof($col); $i++)
-        @foreach($col[$kes[$i]] as $key => $value )
-        <th>{{$col[$i]['name']}}</th>
-        @break
-      @endforeach
-      @endfor
-        <tr>
-        </tr>
-          @for($i=0;$i< sizeof($col); $i++)
-          @foreach($col[$kes[$i]] as $key => $value )
-        <td>{{$col[$i]['value']}}</td>
-        @break
-        @endforeach
+    <thead>
+      <tr>
+        @for($i = 0 ; $i < sizeof($col); $i++)
+            @if($i >= sizeof($col)-3 )
+              <th colspan="2"><center>Analisi Solusi Sederhana</center></th>
+              <th rowspan="2"><center>Keterangan</center></th>
+            </tr>
+            <tr>
+              <th><center>Bagi Pengambil Keputusan</center></th>
+              <th><center>Intervensi</center></th>
+              @break
+            @else
+              <th rowspan="2"><center>{{ucwords(str_replace('_',' ',$col[$i]['name']))}}</center></th>
+          @endif
         @endfor
+      </tr>
+    </thead>
+    <tbody>
+      @foreach($que as $key => $item)
+      <tr>
+          @foreach($col as $key => $value)
+            <td>{{$item[$value['name']]}}</td>
+          @endforeach
+      </tr>
+      @endforeach
+    </tbody>
   </table>
-  

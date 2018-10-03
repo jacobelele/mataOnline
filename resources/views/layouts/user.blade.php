@@ -10,7 +10,7 @@ $('#selectProvinsi').change(function(e){
     $('#selectKota').find('option').remove().end();
     $.ajax({
         type: 'GET',
-        url: 'http://localhost/mata/public/getKota/' + select_val
+        url: 'http://mata.local/getKota/' + select_val
     }).then(function (data) {
         var option = new Option("Pilih Kota", 0, true, true);
         studentSelect.append(option);
@@ -22,7 +22,7 @@ $('#selectProvinsi').change(function(e){
           var select_val = $(e.currentTarget).val();
           if(select_val && select_val != 0){
             $.ajax({
-              url:'http://localhost/mata/public/user/'+select_val,
+              url:'http://mata.local/user/'+select_val,
               dataType:"html",
               success:function(data) {
                 $('#showData').html(data);
@@ -61,7 +61,7 @@ $('#selectProvinsi').change(function(e){
     $('#selectKecamatan').find('option').remove().end();
     $.ajax({
         type: 'GET',
-        url: 'http://localhost/mata/public/getKecamatan/' + select_val
+        url: 'http://mata.local/getKecamatan/' + select_val
     }).then(function (data) {
         var option = new Option("Pilih Kecamatan", 0, true, true);
         kecSelect.append(option);
@@ -73,7 +73,7 @@ $('#selectProvinsi').change(function(e){
           var select_val = $(e.currentTarget).val();
           if(select_val && select_val != 0){
             $.ajax({
-              url:'http://localhost/mata/public/user/'+select_val,
+              url:'http://mata.local/user/'+select_val,
               dataType:"html",
               success:function(data) {
                 $('#showData').html(data);
@@ -120,7 +120,7 @@ $('#selectProvinsi').change(function(e){
     $('#selectKelurahan').find('option').remove().end();
     $.ajax({
         type: 'GET',
-        url: 'http://localhost/mata/public/getKelurahan/' + select_val
+        url: 'http://mata.local/getKelurahan/' + select_val
     }).then(function (data) {
         var option = new Option("Pilih Kelurahan", 0, true, true);
         lurSelect.append(option);
@@ -132,7 +132,7 @@ $('#selectProvinsi').change(function(e){
           var select_val = $(e.currentTarget).val();
           if(select_val && select_val != 0){
             $.ajax({
-              url:'http://localhost/mata/public/user/'+select_val,
+              url:'http://mata.local/user/'+select_val,
               dataType:"html",
               success:function(data) {
                 $('#showData').html(data);

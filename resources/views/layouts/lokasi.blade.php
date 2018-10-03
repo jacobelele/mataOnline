@@ -14,7 +14,7 @@ $(document).ready(function () {
       minimumInputLength: 1,
       ajax: {
                 // http://localhost/wompra/public/clientes/clientes
-                url: 'http://localhost/mata/public/getBidang',
+                url: 'http://mata.local/getBidang',
                 dataType: 'json',
                 data: function (params) {
                     return {
@@ -39,7 +39,7 @@ $(document).ready(function () {
               // multiple: false,
               minimumInputLength: 1,
               ajax: {
-                        url: 'http://localhost/mata/public/getTabulasi',
+                        url: 'http://mata.local/getTabulasi',
                         dataType: 'json',
                         data: function (params) {
                             return {
@@ -60,7 +60,7 @@ $(document).ready(function () {
           // console.log({{@$_COOKIE['ssotok']}});
           if(select_val){
             $.ajax({
-              url:'http://localhost/mata/public/viewDyn/'+select_val,
+              url:'http://mata.local/viewDyn/'+select_val,
               type:"GET",
               dataType:"html",
               success:function(data) {
@@ -124,7 +124,7 @@ $(document).ready(function () {
       $('#selectKota').find('option').remove().end();
       $.ajax({
           type: 'GET',
-          url: 'http://localhost/mata/public/getKota/' + select_val
+          url: 'http://mata.local/getKota/' + select_val
       }).then(function (data) {
           var option = new Option("Pilih Kota", 0, true, true);
           studentSelect.append(option).trigger('change');
@@ -138,7 +138,7 @@ $(document).ready(function () {
             $('#selectKecamatan').find('option').remove().end();
             $.ajax({
                 type: 'GET',
-                url: 'http://localhost/mata/public/getKecamatan/' + select_val
+                url: 'http://mata.local/getKecamatan/' + select_val
             }).then(function (data) {
                 var option = new Option("Pilih Kecamatan", 0, true, true);
                 kecSelect.append(option).trigger('change');
@@ -152,7 +152,7 @@ $(document).ready(function () {
                   $('#selectKelurahan').find('option').remove().end();
                   $.ajax({
                       type: 'GET',
-                      url: 'http://localhost/mata/public/getKelurahan/' + select_val
+                      url: 'http://mata.local/getKelurahan/' + select_val
                   }).then(function (data) {
                       var option = new Option("Pilih Kelurahan", 0, true, true);
                       lurSelect.append(option).trigger('change');

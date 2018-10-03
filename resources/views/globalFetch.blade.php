@@ -72,9 +72,12 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Tahun
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input  class="form-control" type="text" placeholder="click to show datepicker"  id="datetimepicker" name="start">
+                          <input  class="form-control" type="text" placeholder="click to show datepicker"  id="datetimepicker" name="start" >
                         </div>
                       </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-11">
+                          <button id="tampil" >Tampilkan</button>
+                        </div>
 
                     <button onclick="print()">Print this page</button>
 

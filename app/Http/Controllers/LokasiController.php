@@ -86,13 +86,26 @@ class LokasiController extends Controller
 
      public function getTable($idTab,$kelId,$thn)
      {
-       $tbl1 = DB::table('bid_'.$idTab)->where('bid_'.$idTab.'.kelurahan_id','like',$kelId.'%')->where('bid_'.$idTab.'.tahun','like',$thn.'%')->get();
+       // dd(strlen($kelId));
+       if(strlen($kelId) == 10){
+         $tbl1 = DB::table('bid_'.$idTab)->where('bid_'.$idTab.'.kelurahan_id','like',$kelId.'%')->where('bid_'.$idTab.'.tahun','like',$thn.'%')->get();
+         $kel = true;
+       }else{
+         $tbl1 = DB::table('bid_'.$idTab)
+                ->select('kelompok_umur',DB::raw('SUM(laki_laki) as laki_laki'),DB::raw('SUM(perempuan) as perempuan'))
+                 ->where('bid_'.$idTab.'.kelurahan_id','like',$kelId.'%')
+                 ->where('bid_'.$idTab.'.tahun','like',$thn.'%')
+                 ->groupBy('bid_'.$idTab.'.kelompok_umur')
+                 ->get();
+        $kel = false;
+      }
+      // dd($tbl1);
 
        $tbl = DB::table('tabulasi')
              ->select('tabulasi.data_laravel')
              ->where('tabulasi.id','=',$idTab)
              ->get();
-       $returnHTML = view($tbl[0]->data_laravel,['idTab'=>$idTab,'tbl1'=>$tbl1])->render();
+       $returnHTML = view($tbl[0]->data_laravel,['idTab'=>$idTab,'tbl1'=>$tbl1,'kel'=>$kel])->render();
        // dd($returnHTML);
        return $returnHTML;
      }
@@ -232,7 +245,7 @@ class LokasiController extends Controller
       // dd($data);
       $tab = $data['tabulasi_id'];
 
-      $que = DB::table('bid_'.$tab)
+      $lok = DB::table('bid_'.$tab)
             // ->where('bid_'.$tab.'.tahun','=',$data['start'])
             ->join('kelurahan','bid_'.$tab.'.kelurahan_id','=','kelurahan.id')
             ->join('kecamatan','kelurahan.kecamatan_id','=','kecamatan.id')
@@ -247,10 +260,34 @@ class LokasiController extends Controller
                        'kabupaten.nama as kota',
                        'kecamatan.nama as kecamatan',
                        'kelurahan.nama as kelurahan',
+                       'bid_'.$tab.'.tahun'
+                     )
+            ->limit(1)->get()->toArray();
+            // dd($lok);
+      $f = DB::table('bid_'.$tab)
+            // ->where('bid_'.$tab.'.tahun','=',$data['start'])
+            // ->join('kelurahan','bid_'.$tab.'.kelurahan_id','=','kelurahan.id')
+            // ->join('kecamatan','kelurahan.kecamatan_id','=','kecamatan.id')
+            // ->join('kabupaten','kecamatan.kabupaten_id','=','kabupaten.id')
+            // ->join('provinsi','Kabupaten.provinsi_id','=','provinsi.id')
+            // ->join('tabulasi','bid_'.$tab.'.tabulasi_id','=','tabulasi.id')
+            // ->join('bidang','tabulasi.bidang_id','=','bidang.id')
+            ->select(
+                       // 'bidang.nama as bidang',
+                       // 'tabulasi.nama as tabel',
+                       // 'provinsi.nama as provinsi',
+                       // 'kabupaten.nama as kota',
+                       // 'kecamatan.nama as kecamatan',
+                       // 'kelurahan.nama as kelurahan',
                        'bid_'.$tab.'.*'
                      )
             ->get()->toArray();
-
+      $que = array();
+      foreach ($f as $key => $value) {
+        // dd($value);
+        array_push($que, (array)$value);
+      }
+            // dd($col);
       // $arr = (array)$que[0];
       $columns = DB::select('show columns from ' . 'bid_'.$tab);
       $test = (array)$que[0];
@@ -266,16 +303,16 @@ class LokasiController extends Controller
         $i++;
       }
       $col = collect($valueForm)->toArray();
+      // dd($col);
 
-
-      // $contxt = stream_context_create(['ssl' => ['verify_peer' => FALSE,'verify_peer_name' => FALSE,'allow_self_signed'=> TRUE]]);
-      // PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,'defaultFont' => 'times new roman']);
-      // $pdf = PDF::loadView('export',['col'=>$col,'que'=>$que]);
-      // $orientation = 'landscape';
-      // $customPaper = array(0,0,950,950);
-      // $pdf->setPaper($customPaper,$orientation);
-      // return $pdf->download('report.pdf');
-      return view('export',compact('col','que'));
+      $contxt = stream_context_create(['ssl' => ['verify_peer' => FALSE,'verify_peer_name' => FALSE,'allow_self_signed'=> TRUE]]);
+      PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true,'defaultFont' => 'times new roman']);
+      $pdf = PDF::loadView('export',['lok'=>$lok,'col'=>$col,'que'=>$que]);
+      $orientation = 'landscape';
+      $customPaper = array(0,0,950,950);
+      $pdf->setPaper($customPaper,$orientation);
+      return $pdf->download('report.pdf');
+      // return view('export',compact('lok','col','que'));
     }
 
 
